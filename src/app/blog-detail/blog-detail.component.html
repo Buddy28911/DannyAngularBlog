@@ -1,0 +1,6 @@
+
+<div *ngIf="blogPost">
+  <h1>{{ blogPost.title }}</h1>
+  <p>{{ blogPost.content }}</p>
+  <p><small>By {{ blogPost.author }} on {{ blogPost.date | date }}</small></p>
+</div>
