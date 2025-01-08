@@ -1,6 +1,10 @@
-
 <div *ngIf="blogPost">
   <h1>{{ blogPost.title }}</h1>
-  <p>{{ blogPost.content }}</p>
+  <div *ngFor="let content of blogPost.content">
+    <ng-container [ngSwitch]="content.type">
+      <p *ngSwitchCase="'text'">{{ content.value }}</p>
+      <img *ngSwitchCase="'image'" [src]="content.value" alt="Blog Image">
+    </ng-container>
+  </div>
   <p><small>By {{ blogPost.author }} on {{ blogPost.date | date }}</small></p>
 </div>
