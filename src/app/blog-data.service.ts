@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BlogPost, BlogPostContent } from './models/blog-post.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +43,26 @@ export class BlogDataService {
       author: 'Danny Noe',
       date: new Date(),
       summary: 'Top 10 Favorite Albums'
+    },
+    {
+      id: 4,
+      title: 'First Markdown Blog Post!',
+      content: [{ type: 'markdown', value: '/markdownposts/FirstMarkDownBlog.md' }],
+      author: 'Danny Noe',
+      date: new Date(),
+      summary: 'A smaller attempt at a blog post using markdown.'
+    },
+    {
+      id: 5,
+      title: 'Album of the Year 2024',
+      content: [ { type: 'markdown', value: '/markdownposts/blogpostExample.md' } ],
+      author: 'Danny Noe',
+      date: new Date(),
+      summary: 'My list of albums I heard in 2024, ranked.'
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getBlogPosts(): BlogPost[] {
     return this.blogPosts.sort((a, b) => b.id - a.id);
@@ -51,5 +70,13 @@ export class BlogDataService {
 
   getBlogPostById(id: number): BlogPost | undefined {
     return this.blogPosts.find(post => post.id === id);
+  }
+
+  loadMarkdownFile(url: string): Observable<BlogPostContent[]> {
+    return this.http.get(url, { responseType: 'text' }).pipe(
+      map(markdown => [
+        { type: 'markdown', value: markdown }
+      ])
+    );
   }
 }

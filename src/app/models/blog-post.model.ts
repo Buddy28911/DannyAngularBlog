@@ -1,5 +1,5 @@
 export interface BlogPostContent {
-  type: 'text' | 'image';
+  type: 'text' | 'image' | 'markdown';
   value: string;
 }
 
