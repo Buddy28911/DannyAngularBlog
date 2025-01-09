@@ -1,6 +1,7 @@
-<!-- src/app/blog/blog.component.html -->
-<div *ngFor="let post of blogPosts">
-  <h2><a [routerLink]="['/blog', post.id]">{{ post.title }}</a></h2>
-  <p>{{ post.summary }}</p>
-  <p><small>By {{ post.author }} on {{ post.date | date }}</small></p>
-</div>
+<main class="main">
+  <div *ngFor="let post of blogPosts">
+    <h2><a [routerLink]="['/blog', post.id]">{{ post.title }}</a></h2>
+    <p>{{ post.summary }}</p>
+    <p><small>By {{ post.author }} on {{ post.date | date }}</small></p>
+  </div>
+</main>
