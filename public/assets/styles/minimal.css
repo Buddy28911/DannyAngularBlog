@@ -16,14 +16,17 @@ body {
 }
 
 h1 {
+  color: #023E8A !important;
   font-size: 2.5em
 }
 
 h2 {
+  color: #0077B6 !important;
   font-size: 2em;
 }
 
 h3 {
+  color: #0096C7 !important;
   font-size: 1.5em
 }
 
@@ -45,16 +48,16 @@ code {
 }
 
 pre {
-  border-left: 2px solid #bbb;
+  border-left: 2px solid #023E8A;
   padding: 1em;
 }
 
 a {
-  color: #f56a6a;
+  color: #03045E;
 }
 
 blockquote, q {
-  border-left: solid 4px #bbb;
+  border-left: solid 4px #023E8A;
   font-style: italic;
   margin: 0 0 2em 0;
   padding: 0.5em 0 0.5em 2em;

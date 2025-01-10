@@ -40,3 +40,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+public/assets/styles/OGminimal-inputs.css
+public/assets/styles/OGminimal.css
