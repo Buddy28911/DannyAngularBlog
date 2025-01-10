@@ -55,7 +55,7 @@ export class BlogDataService {
     {
       id: 5,
       title: 'Album of the Year 2024',
-      content: [ { type: 'markdown', value: '/markdownposts/blogpostExample.md' } ],
+      content: [ { type: 'markdown', value: '/markdownposts/aoty2024.md' } ],
       author: 'Danny Noe',
       date: new Date(),
       summary: 'My list of albums I heard in 2024, ranked.'
