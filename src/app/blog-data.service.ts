@@ -13,43 +13,19 @@ export class BlogDataService {
       id: 1,
       title: 'Hello World!',
       content: [
-        { type: 'text', value: 'This is my first blog post. Sup?' }
+        { type: 'text', value: 'This is my first blog post. It uses my internal `text` type' }
       ],
       author: 'Danny Noe',
-      date: new Date(),
-      summary: 'First post uwu'
+      date: new Date('2024-01-07T00:00:00Z'),
+      summary: 'My first blog post, text only.'
     },
+    
     {
       id: 2,
-      title: 'Second Blog Post',
-      content: [
-        { type: 'text', value: 'This is the content of the second blog post.' }
-      ],
-      author: 'Danny Noe',
-      date: new Date(),
-      summary: 'Second post uwu'
-    },
-    {
-      id: 3,
-      title: 'Top 10 Favorite Albums',
-      content: [
-        { type: 'text', value: '**10** Favorite Album 10' },
-        { type: 'image', value: 'assets/images/image01.jpg' },
-        { type: 'text', value: 'My thoughts...' },
-        { type: 'text', value: '**9** Favorite Album 9' },
-        { type: 'image', value: 'assets/images/image02.jpg' },
-        { type: 'text', value: 'Words' }
-      ],
-      author: 'Danny Noe',
-      date: new Date(),
-      summary: 'Top 10 Favorite Albums'
-    },
-    {
-      id: 4,
       title: 'First Markdown Blog Post!',
       content: [{ type: 'markdown', value: '/markdownposts/FirstMarkDownBlog.md' }],
       author: 'Danny Noe',
-      date: new Date(),
+      date: new Date('2024-01-09T00:00:00Z'),
       summary: 'A smaller attempt at a blog post using markdown.'
     },
     {
@@ -57,7 +33,7 @@ export class BlogDataService {
       title: 'Album of the Year 2024',
       content: [ { type: 'markdown', value: '/markdownposts/aoty2024.md' } ],
       author: 'Danny Noe',
-      date: new Date(),
+      date: new Date('2024-01-10T00:00:00Z'),
       summary: 'My list of albums I heard in 2024, ranked.'
     }
   ];
