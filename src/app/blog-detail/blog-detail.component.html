@@ -5,7 +5,7 @@
       <ng-container [ngSwitch]="content.type">
         <p *ngSwitchCase="'text'">{{ content.value }}</p>
         <img *ngSwitchCase="'image'" [src]="content.value" alt="Blog Image">
-        <div *ngSwitchCase="'markdown'" [innerHTML]="(parseMarkdown(content.value) | async) ?? ''"></div>
+        <div *ngSwitchCase="'html'" [innerHTML]="content.value"></div>
       </ng-container>
     </div>
     <p><small>By {{ blogPost.author }} on {{ blogPost.date | date }}</small></p>

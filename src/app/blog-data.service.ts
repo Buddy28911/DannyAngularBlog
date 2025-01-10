@@ -72,11 +72,7 @@ export class BlogDataService {
     return this.blogPosts.find(post => post.id === id);
   }
 
-  loadMarkdownFile(url: string): Observable<BlogPostContent[]> {
-    return this.http.get(url, { responseType: 'text' }).pipe(
-      map(markdown => [
-        { type: 'markdown', value: markdown }
-      ])
-    );
+  loadMarkdownFile(url: string): Observable<string> {
+    return this.http.get(url, { responseType: 'text' });
   }
 }

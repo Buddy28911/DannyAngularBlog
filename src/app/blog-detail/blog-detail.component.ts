@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BlogDataService } from '../blog-data.service';
-import { BlogPost } from '../models/blog-post.model';
+import { BlogPost, BlogPostContent } from '../models/blog-post.model';
 import { marked } from 'marked';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: 'app-blog-detail',
@@ -27,22 +28,25 @@ export class BlogDetailComponent implements OnInit {
     this.blogPost = this.blogDataService.getBlogPostById(id);
 
     if (this.blogPost) {
-      const markdownContents = this.blogPost.content.filter(content => content.type === 'markdown');
-
-      markdownContents.forEach(markdownContent => {
-        this.blogDataService.loadMarkdownFile(markdownContent.value).subscribe(content => {
-          markdownContent.value = content[0].value;
-          this.parseMarkdown(markdownContent.value).then(parsedContent => {
-            markdownContent.value = parsedContent;
-          });
-        });
-      });
+      this.loadPost().then((contents) => (this.blogPost!.content = contents));
     }
   }
 
-  async parseMarkdown(content: string): Promise<string> {
-    const result = marked(content);
-    console.log('result', result);
-    return result;
+  async loadPost(): Promise<BlogPostContent[]> {
+    return Promise.all(
+      this.blogPost!.content.map(async (content) => {
+        if (content.type === 'markdown') {
+          return {
+            type: 'html',
+            value: await marked(
+              await firstValueFrom(
+                this.blogDataService.loadMarkdownFile(content.value),
+              ),
+            ),
+          };
+        }
+        return content;
+      }),
+    );
   }
 }
